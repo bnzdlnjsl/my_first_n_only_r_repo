@@ -1,0 +1,221 @@
+---
+title: "homework1"
+author: "hxp"
+date: "2021/7/10"
+---
+
+------
+
+# 1
+
+## a
+```{r a}
+iowa.df <- read.csv("data/Iowa.csv",header=T, sep = ";")
+typeof(iowa.df)
+iowa.df <- as.data.frame(iowa.df)
+typeof(iowa.df)
+```
+
+## b
+```{r b}
+nrow(iowa.df)
+ncol(iowa.df)
+```
+行数为33，列数为10
+
+## c
+```{r c}
+colnames(iowa.df)
+```
+每一列的名称
+
+## d
+```{r d}
+iowa.df[5, 7]
+```
+第5行、第7列元素的值
+
+## e
+```{r e}
+iowa.df[2, ]
+```
+第2行的全部数据
+
+---
+
+# 2
+
+## a
+
+第一行合法，因为该向量由字符串元素组成；
+第二行合法，因为字符串可以由字典序进行排序；
+第三行合法，同样由于字符串可排序；
+第四行出错，因为并没有给字符串定义加法故不能求和。
+
+# b
+
+第一行合法，首元素是字符串，对接下来的每一个元素都会进行尝试强制转换为字符串；
+第二行非法，因为字符串并没有定义加法；
+
+第三行合法，数据框允许作为其元素的每一个列表有不同类型；
+第四行合法，两个数据都是数值类型；
+
+第五行合法，列表元素可以由不同类型组成；
+第六行合法，双重方括号的作用是直接取值，两个数值可以直接相加；
+第七行非法，单括号返回的值类型为列表（包括名称和值）。
+
+---
+
+# 3
+
+## a
+```{r 3a}
+a <- seq(1, 10000, 372)
+a
+```
+步进为372的等差序列。
+
+```{r 3a2}
+a <- seq(1, 10000, (10000 - 1) %/% 49)
+a
+length(a)
+```
+元素个数为50个的等差序列。
+
+## b
+若指定参数为times，则重复单位为整个原向量；
+若指定参数为each，则重复单位为原向量中的每一个元素。
+
+---
+
+# MB.Ch1.2
+```{r 121}
+library(DAAG)
+data(orings)
+```
+```{r 122}
+colnames(orings)
+```
+```{r 123}
+nrow(orings)
+```
+
+```{r 124}
+orings
+```
+```{r 125}
+orings_new <- orings[c(1, 2, 4, 11, 13, 18), ]
+orings_new
+which(orings[[4]] > 0)
+```
+```{r 126}
+plot(x = orings_new[[1]], y = orings_new[[4]], type = "o")
+```
+特定数据下温度和总体事故的关系。
+
+```{r 127}
+plot(x = orings[[1]], y = orings[[4]], type = "o")
+```
+全部数据下相应的关系。
+
+---
+
+# MB.Ch1.4
+
+## (a)
+```{r 141}
+data(ais)
+str(ais)
+```
+```{r 142}
+apply(ais, 2, function(x) any(is.na(x)))
+```
+不存在含有未知元素NA的列。
+
+## (b)
+```{r 143}
+sport_new <- c()
+m_new <- c()
+f_new <- c()
+
+ais_sport <- ais[["sport"]][!duplicated(ais[["sport"]])]
+# 根据运动分割数据：
+for(sport in ais_sport){
+  ais_new <- ais[ais[["sport"]] == sport, ]
+  sport_new <- c(sport_new, sport)
+  tmp <- sum(ais_new[["sex"]] == "m")
+  m_new <- c(m_new, tmp)
+  f_new <- c(f_new, nrow(ais_new) - tmp)
+}
+gender.data.frame <- data.frame(sport = sport_new, m = m_new, f = f_new)
+gender.data.frame
+```
+```{r 144}
+imbalanced_sports <- gender.data.frame[["sport"]][(gender.data.frame[["m"]] / gender.data.frame[["f"]] > 2) | (gender.data.frame[["f"]] / gender.data.frame[["m"]] > 2)]
+imbalanced_sports
+```
+
+---
+
+# MB.Ch1.6
+
+## (a)
+```{r 161}
+data(Manitoba.lakes)
+Manitoba.lakes
+```
+```{r 162}
+row.names(Manitoba.lakes)
+```
+```{r 163}
+attach(Manitoba.lakes)
+plot(log2(area) ~ elevation, pch=16, xlim=c(170,260))
+text(log2(area) ~ elevation, labels=row.names(Manitoba.lakes), pos=4)
+text(log2(area) ~ elevation, labels=area, pos=2)
+title("Manitoba's Largest Lakes")
+#mtext("y 轴表示对数尺度", side = 2)
+text(183, 11.5, "注意：y 轴为对数尺度，")
+text(190, 11, "而点的左边为真实海拔（单位：m）")
+```
+```{r 164}
+plot(area ~ elevation, pch=16, xlim=c(170,280), ylog=T)
+text(area ~ elevation, labels=row.names(Manitoba.lakes), pos=4, ylog=T)
+text(area ~ elevation, labels=area, pos=2, ylog=T)
+title("Manitoba's Largest Lakes")
+```
+
+---
+
+# MB.Ch1.7
+
+## (a)
+```{r 171}
+dotchart(area, labels=row.names(Manitoba.lakes), xlab = "Area", ylab = "Name", main = "Manitoba's Largest Lakes")
+```
+
+## (b)
+```{r 172}
+dotchart(log2(area), labels=row.names(Manitoba.lakes), xlab = "log2(Area)", ylab = "Name", main = "Manitoba's Largest Lakes")
+```
+
+---
+
+# MB.Ch1.8
+```{r 181}
+lower_bound <- sum(area)
+lower_bound
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+

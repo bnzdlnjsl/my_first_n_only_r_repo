@@ -1,0 +1,163 @@
+---
+title: "Lab1"
+author: "hxp"
+date: "2021/7/10"
+output: pdf_document
+---
+
+# 第一部分
+- 使用标准指数分布生成200个随机数并存储到相应向量中：
+```{r}
+exp.draws.1 <- rexp(n = 200)
+```
+- 平均值：
+```{r}
+exp.draws.1.mean <- mean(exp.draws.1)
+exp.draws.1.mean
+```
+- 标准差：
+```{r}
+exp.draws.1.sd <- sd(exp.draws.1)
+exp.draws.1.sd
+```
+
+```{r}
+exp.draws.0.1 <- rexp(n = 200, rate = 0.1)
+```
+- 平均值：
+```{r}
+exp.draws.0.1.mean <- mean(exp.draws.0.1)
+exp.draws.0.1.mean
+```
+- 标准差：
+```{r}
+exp.draws.0.1.sd <- sd(exp.draws.0.1)
+exp.draws.0.1.sd
+```
+
+
+```{r}
+exp.draws.0.5 <- rexp(n = 200, rate = 0.5)
+```
+- 平均值：
+```{r}
+exp.draws.0.5.mean <- mean(exp.draws.0.5)
+exp.draws.0.5.mean
+```
+- 标准差：
+```{r}
+exp.draws.0.5.sd <- sd(exp.draws.0.5)
+exp.draws.0.5.sd
+```
+
+
+```{r}
+exp.draws.5 <- rexp(n = 200, rate = 5)
+```
+- 平均值：
+```{r}
+exp.draws.5.mean <- mean(exp.draws.5)
+exp.draws.5.mean
+```
+- 标准差：
+```{r}
+exp.draws.5.sd <- sd(exp.draws.5)
+exp.draws.5.sd
+```
+
+
+```{r}
+exp.draws.10 <- rexp(n = 200, rate = 10)
+```
+- 平均值：
+```{r}
+exp.draws.10.mean <- mean(exp.draws.10)
+exp.draws.10.mean
+```
+- 标准差：
+```{r}
+exp.draws.10.sd <- sd(exp.draws.10)
+exp.draws.10.sd
+```
+
+- 标准分布的直方图：
+```{r}
+hist(exp.draws.1)
+```
+
+- 相应的普通散点图：
+```{r}
+plot(exp.draws.1)
+```
+
+- 两个向量的散点图：
+```{r}
+plot(exp.draws.1, exp.draws.10)
+```
+```{r}
+# 将五个向量合成为一个矩阵：
+exp.draws.matrix <- matrix(data = c(exp.draws.1, exp.draws.0.1, exp.draws.0.5, exp.draws.5, exp.draws.10), nrow = 200, ncol = 5)
+# 参数：
+exp.draws.matrix.rate <- c(1, 0.1, 0.5, 5, 10)
+exp.draws.matrix.rate
+# 均值：
+exp.draws.matrix.mean <- apply(exp.draws.matrix, 2, mean)
+exp.draws.matrix.mean
+# 标准差：
+exp.draws.matrix.sd <- apply(exp.draws.matrix, 2, sd)
+exp.draws.matrix.sd
+```
+```{r}
+plot(x = exp.draws.matrix.mean, y = exp.draws.matrix.rate)
+```
+均值和参数成反比
+```{r}
+plot(x = exp.draws.matrix.sd, y = exp.draws.matrix.rate)
+```
+标准差与均值相等故也与参数成反比
+```{r}
+plot(x = exp.draws.matrix.mean, y = exp.draws.matrix.sd)
+```
+均值和标准差相等因此是一条斜率近乎为1的直线
+
+# 第二部分
+```{r}
+big.exp.draws.1 <- rexp(n = 1100000)
+```
+- 平均值：
+```{r}
+big.exp.draws.1.mean <- mean(big.exp.draws.1)
+big.exp.draws.1.mean
+```
+- 标准差：
+```{r}
+big.exp.draws.1.sd <- sd(big.exp.draws.1)
+big.exp.draws.1.sd
+```
+```{r}
+hist(big.exp.draws.1)
+```
+```{r}
+big.exp.draws.1.bigger_than_1 <- big.exp.draws.1[big.exp.draws.1 > 1]
+big.exp.draws.1.bigger_than_1.mean = mean(big.exp.draws.1.bigger_than_1)
+big.exp.draws.1.bigger_than_1.mean
+```
+```{r}
+big.exp.draws.1.mat <- matrix(data = big.exp.draws.1, ncol = 1000)
+big.exp.draws.1.mat.hist_result <- hist(big.exp.draws.1.mat)
+```
+```{r}
+big.exp.draws.1.mat.371st_col.mean <- mean(big.exp.draws.1.mat[, 371])
+big.exp.draws.1.mat.371st_col.mean
+```
+```{r}
+big.exp.draws.1.mat.col.mean <- apply(big.exp.draws.1.mat, 2, mean)
+hist(big.exp.draws.1.mat.col.mean)
+```
+这叫做“一千个服从标准指数分布的随机变量的均值服从标准正态分布”
+```{r}
+big.exp.draws.1.sq <- big.exp.draws.1^0.5
+big.exp.draws.1.sq.mean <- mean(big.exp.draws.1.sq)
+big.exp.draws.1.sq.mean
+```
+

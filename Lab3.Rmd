@@ -1,0 +1,40 @@
+---
+title: "Lab3"
+author: "hxp"
+date: "2021/7/11"
+output: html_document
+---
+
+```{r}
+d <- read_csv("data/results.csv")
+```
+```{r}
+d %>% dplyr::select(date, home_team, away_team)
+```
+```{r}
+d %>% filter(home_team == "Brazil")
+```
+```{r}
+d %>% filter(home_team == "Brazil") %>% filter(home_score > away_score) %>% dplyr::select(date, away_team, tournament)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

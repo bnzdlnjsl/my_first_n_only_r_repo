@@ -1,0 +1,49 @@
+---
+title: "chapter4"
+author: "hxp"
+date: "2021/7/11"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+```
+```{r}
+## wide format
+gap_wide <- readr::read_csv('data/gapminder_wide.csv')
+gapminder <- readr::read_csv('data/gapminder.csv')
+```
+```{r}
+#head(gap_wide)
+str(gap_wide)
+```
+```{r}
+tail(gap_wide)
+```
+```{r}
+head(gap_wide)
+```
+```{r}
+gap_long <- gap_wide %>%
+  gather(key = obstype_year,
+         value = obs_values,
+         dplyr::starts_with('pop'),
+         dplyr::starts_with('lifeExp'),
+         dplyr::starts_with('gdpPercap'))
+str(gap_long)
+```
+```{r}
+colnames(gapminder)
+```
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1044 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={homework1},
+  pdfauthor={hxp},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+-\usepackage[UTF8]{ctex}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{homework1}
+\author{hxp}
+\date{2021/7/10}
+
+\begin{document}
+\maketitle
+
+\hypertarget{section}{%
+\section{1}\label{section}}
+
+\hypertarget{a}{%
+\subsection{a}\label{a}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{iowa.df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/Iowa.csv"}\NormalTok{,}\AttributeTok{header=}\NormalTok{T, }\AttributeTok{sep =} \StringTok{";"}\NormalTok{)}
+\FunctionTok{typeof}\NormalTok{(iowa.df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "list"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{iowa.df }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(iowa.df)}
+\FunctionTok{typeof}\NormalTok{(iowa.df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "list"
+\end{verbatim}
+
+\hypertarget{b}{%
+\subsection{b}\label{b}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{nrow}\NormalTok{(iowa.df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 33
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ncol}\NormalTok{(iowa.df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10
+\end{verbatim}
+
+行数为33，列数为10
+
+\hypertarget{c}{%
+\subsection{c}\label{c}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colnames}\NormalTok{(iowa.df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "Year"  "Rain0" "Temp1" "Rain1" "Temp2" "Rain2" "Temp3" "Rain3" "Temp4"
+## [10] "Yield"
+\end{verbatim}
+
+每一列的名称
+
+\hypertarget{d}{%
+\subsection{d}\label{d}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{iowa.df[}\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 79.7
+\end{verbatim}
+
+第5行、第7列元素的值
+
+\hypertarget{e}{%
+\subsection{e}\label{e}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{iowa.df[}\DecValTok{2}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Year Rain0 Temp1 Rain1 Temp2 Rain2 Temp3 Rain3 Temp4 Yield
+## 2 1931 14.76  57.5  3.83    75  2.72  77.2   3.3  72.6  32.9
+\end{verbatim}
+
+第2行的全部数据
+
+\hypertarget{section-1}{%
+\section{2}\label{section-1}}
+
+\hypertarget{a-1}{%
+\subsection{a}\label{a-1}}
+
+第一行合法，因为该向量由字符串元素组成；
+第二行合法，因为字符串可以由字典序进行排序；
+第三行合法，同样由于字符串可排序；
+第四行出错，因为并没有给字符串定义加法故不能求和。
+
+\hypertarget{b-1}{%
+\section{b}\label{b-1}}
+
+第一行合法，首元素是字符串，对接下来的每一个元素都会进行尝试强制转换为字符串；
+第二行非法，因为字符串并没有定义加法；
+
+第三行合法，数据框允许作为其元素的每一个列表有不同类型；
+第四行合法，两个数据都是数值类型；
+
+第五行合法，列表元素可以由不同类型组成；
+第六行合法，双重方括号的作用是直接取值，两个数值可以直接相加；
+第七行非法，单括号返回的值类型为列表（包括名称和值）。
+
+\hypertarget{section-2}{%
+\section{3}\label{section-2}}
+
+\hypertarget{a-2}{%
+\subsection{a}\label{a-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10000}\NormalTok{, }\DecValTok{372}\NormalTok{)}
+\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]    1  373  745 1117 1489 1861 2233 2605 2977 3349 3721 4093 4465 4837 5209
+## [16] 5581 5953 6325 6697 7069 7441 7813 8185 8557 8929 9301 9673
+\end{verbatim}
+
+步进为372的等差序列。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10000}\NormalTok{, (}\DecValTok{10000} \SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%/\%} \DecValTok{49}\NormalTok{)}
+\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]    1  205  409  613  817 1021 1225 1429 1633 1837 2041 2245 2449 2653 2857
+## [16] 3061 3265 3469 3673 3877 4081 4285 4489 4693 4897 5101 5305 5509 5713 5917
+## [31] 6121 6325 6529 6733 6937 7141 7345 7549 7753 7957 8161 8365 8569 8773 8977
+## [46] 9181 9385 9589 9793 9997
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 50
+\end{verbatim}
+
+元素个数为50个的等差序列。
+
+\hypertarget{b-2}{%
+\subsection{b}\label{b-2}}
+
+若指定参数为times，则重复单位为整个原向量；
+若指定参数为each，则重复单位为原向量中的每一个元素。
+
+\hypertarget{mb.ch1.2}{%
+\section{MB.Ch1.2}\label{mb.ch1.2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(DAAG)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 载入需要的程辑包：lattice
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(orings)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colnames}\NormalTok{(orings)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Temperature" "Erosion"     "Blowby"      "Total"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{nrow}\NormalTok{(orings)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 23
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{orings}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Temperature Erosion Blowby Total
+## 1           53       3      2     5
+## 2           57       1      0     1
+## 3           58       1      0     1
+## 4           63       1      0     1
+## 5           66       0      0     0
+## 6           67       0      0     0
+## 7           67       0      0     0
+## 8           67       0      0     0
+## 9           68       0      0     0
+## 10          69       0      0     0
+## 11          70       1      0     1
+## 12          70       0      0     0
+## 13          70       1      0     1
+## 14          70       0      0     0
+## 15          72       0      0     0
+## 16          73       0      0     0
+## 17          75       0      0     0
+## 18          75       0      2     1
+## 19          76       0      0     0
+## 20          76       0      0     0
+## 21          78       0      0     0
+## 22          79       0      0     0
+## 23          81       0      0     0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{orings\_new }\OtherTok{\textless{}{-}}\NormalTok{ orings[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{13}\NormalTok{, }\DecValTok{18}\NormalTok{), ]}
+\NormalTok{orings\_new}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Temperature Erosion Blowby Total
+## 1           53       3      2     5
+## 2           57       1      0     1
+## 4           63       1      0     1
+## 11          70       1      0     1
+## 13          70       1      0     1
+## 18          75       0      2     1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which}\NormalTok{(orings[[}\DecValTok{4}\NormalTok{]] }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  2  3  4 11 13 18
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ orings\_new[[}\DecValTok{1}\NormalTok{]], }\AttributeTok{y =}\NormalTok{ orings\_new[[}\DecValTok{4}\NormalTok{]], }\AttributeTok{type =} \StringTok{"o"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{homework1_files/figure-latex/unnamed-chunk-13-1.pdf}
+特定数据下温度和总体事故的关系。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ orings[[}\DecValTok{1}\NormalTok{]], }\AttributeTok{y =}\NormalTok{ orings[[}\DecValTok{4}\NormalTok{]], }\AttributeTok{type =} \StringTok{"o"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{homework1_files/figure-latex/unnamed-chunk-14-1.pdf}
+全部数据下相应的关系。
+
+\hypertarget{mb.ch1.4}{%
+\section{MB.Ch1.4}\label{mb.ch1.4}}
+
+\hypertarget{a-3}{%
+\subsection{(a)}\label{a-3}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(ais)}
+\FunctionTok{str}\NormalTok{(ais)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    202 obs. of  13 variables:
+##  $ rcc   : num  3.96 4.41 4.14 4.11 4.45 4.1 4.31 4.42 4.3 4.51 ...
+##  $ wcc   : num  7.5 8.3 5 5.3 6.8 4.4 5.3 5.7 8.9 4.4 ...
+##  $ hc    : num  37.5 38.2 36.4 37.3 41.5 37.4 39.6 39.9 41.1 41.6 ...
+##  $ hg    : num  12.3 12.7 11.6 12.6 14 12.5 12.8 13.2 13.5 12.7 ...
+##  $ ferr  : num  60 68 21 69 29 42 73 44 41 44 ...
+##  $ bmi   : num  20.6 20.7 21.9 21.9 19 ...
+##  $ ssf   : num  109.1 102.8 104.6 126.4 80.3 ...
+##  $ pcBfat: num  19.8 21.3 19.9 23.7 17.6 ...
+##  $ lbm   : num  63.3 58.5 55.4 57.2 53.2 ...
+##  $ ht    : num  196 190 178 185 185 ...
+##  $ wt    : num  78.9 74.4 69.1 74.9 64.6 63.7 75.2 62.3 66.5 62.9 ...
+##  $ sex   : Factor w/ 2 levels "f","m": 1 1 1 1 1 1 1 1 1 1 ...
+##  $ sport : Factor w/ 10 levels "B_Ball","Field",..: 1 1 1 1 1 1 1 1 1 1 ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{apply}\NormalTok{(ais, }\DecValTok{2}\NormalTok{, }\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{any}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(x)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    rcc    wcc     hc     hg   ferr    bmi    ssf pcBfat    lbm     ht     wt 
+##  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE 
+##    sex  sport 
+##  FALSE  FALSE
+\end{verbatim}
+
+不存在含有未知元素NA的列。
+
+\hypertarget{b-3}{%
+\subsection{(b)}\label{b-3}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sport\_new }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{()}
+\NormalTok{m\_new }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{()}
+\NormalTok{f\_new }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{()}
+
+\NormalTok{ais\_sport }\OtherTok{\textless{}{-}}\NormalTok{ ais[[}\StringTok{"sport"}\NormalTok{]][}\SpecialCharTok{!}\FunctionTok{duplicated}\NormalTok{(ais[[}\StringTok{"sport"}\NormalTok{]])]}
+\CommentTok{\# 根据运动分割数据：}
+\ControlFlowTok{for}\NormalTok{(sport }\ControlFlowTok{in}\NormalTok{ ais\_sport)\{}
+\NormalTok{  ais\_new }\OtherTok{\textless{}{-}}\NormalTok{ ais[ais[[}\StringTok{"sport"}\NormalTok{]] }\SpecialCharTok{==}\NormalTok{ sport, ]}
+\NormalTok{  sport\_new }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(sport\_new, sport)}
+\NormalTok{  tmp }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(ais\_new[[}\StringTok{"sex"}\NormalTok{]] }\SpecialCharTok{==} \StringTok{"m"}\NormalTok{)}
+\NormalTok{  m\_new }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(m\_new, tmp)}
+\NormalTok{  f\_new }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(f\_new, }\FunctionTok{nrow}\NormalTok{(ais\_new) }\SpecialCharTok{{-}}\NormalTok{ tmp)}
+\NormalTok{\}}
+\NormalTok{gender.data.frame }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{sport =}\NormalTok{ sport\_new, }\AttributeTok{m =}\NormalTok{ m\_new, }\AttributeTok{f =}\NormalTok{ f\_new)}
+\NormalTok{gender.data.frame}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      sport  m  f
+## 1   B_Ball 12 13
+## 2      Row 15 22
+## 3  Netball  0 23
+## 4     Swim 13  9
+## 5    Field 12  7
+## 6   T_400m 18 11
+## 7  T_Sprnt 11  4
+## 8   Tennis  4  7
+## 9      Gym  0  4
+## 10  W_Polo 17  0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{imbalanced\_sports }\OtherTok{\textless{}{-}}\NormalTok{ gender.data.frame[[}\StringTok{"sport"}\NormalTok{]][(gender.data.frame[[}\StringTok{"m"}\NormalTok{]] }\SpecialCharTok{/}\NormalTok{ gender.data.frame[[}\StringTok{"f"}\NormalTok{]] }\SpecialCharTok{\textgreater{}} \DecValTok{2}\NormalTok{) }\SpecialCharTok{|}\NormalTok{ (gender.data.frame[[}\StringTok{"f"}\NormalTok{]] }\SpecialCharTok{/}\NormalTok{ gender.data.frame[[}\StringTok{"m"}\NormalTok{]] }\SpecialCharTok{\textgreater{}} \DecValTok{2}\NormalTok{)]}
+\NormalTok{imbalanced\_sports}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Netball" "T_Sprnt" "Gym"     "W_Polo"
+\end{verbatim}
+
+\hypertarget{mb.ch1.6}{%
+\section{MB.Ch1.6}\label{mb.ch1.6}}
+
+\hypertarget{a-4}{%
+\subsection{(a)}\label{a-4}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(Manitoba.lakes)}
+\NormalTok{Manitoba.lakes}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                elevation  area
+## Winnipeg             217 24387
+## Winnipegosis         254  5374
+## Manitoba             248  4624
+## SouthernIndian       254  2247
+## Cedar                253  1353
+## Island               227  1223
+## Gods                 178  1151
+## Cross                207   755
+## Playgreen            217   657
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{row.names}\NormalTok{(Manitoba.lakes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Winnipeg"       "Winnipegosis"   "Manitoba"       "SouthernIndian"
+## [5] "Cedar"          "Island"         "Gods"           "Cross"         
+## [9] "Playgreen"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{attach}\NormalTok{(Manitoba.lakes)}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{log2}\NormalTok{(area) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ elevation, }\AttributeTok{pch=}\DecValTok{16}\NormalTok{, }\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\DecValTok{170}\NormalTok{,}\DecValTok{260}\NormalTok{))}
+\FunctionTok{text}\NormalTok{(}\FunctionTok{log2}\NormalTok{(area) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ elevation, }\AttributeTok{labels=}\FunctionTok{row.names}\NormalTok{(Manitoba.lakes), }\AttributeTok{pos=}\DecValTok{4}\NormalTok{)}
+\FunctionTok{text}\NormalTok{(}\FunctionTok{log2}\NormalTok{(area) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ elevation, }\AttributeTok{labels=}\NormalTok{area, }\AttributeTok{pos=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{title}\NormalTok{(}\StringTok{"Manitoba\textquotesingle{}s Largest Lakes"}\NormalTok{)}
+\CommentTok{\#mtext("y 轴表示对数尺度", side = 2)}
+\FunctionTok{text}\NormalTok{(}\DecValTok{183}\NormalTok{, }\FloatTok{11.5}\NormalTok{, }\StringTok{"注意：y 轴为对数尺度，"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<e6>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<b3>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<a8>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<e6>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<84>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<8f>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<e8>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<bd>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<b4>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<e4>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<b8>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<ba>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<e5>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<af>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<b9>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<e6>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<95>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<b0>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<e5>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<b0>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<ba>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<e5>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<ba>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): 'mbcsToSbcs'里转
+## 换'娉ㄦ剰锛歽 杞翠负瀵规暟灏哄害锛�'出错：<a6>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): Unicode字符U+6ce8
+## 不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): Unicode字符U+610f
+## 不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): Unicode字符U+8f74
+## 不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): Unicode字符U+4e3a
+## 不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): Unicode字符U+5bf9
+## 不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): Unicode字符U+6570
+## 不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): Unicode字符U+5c3a
+## 不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(183, 11.5, "注意：y 轴为对数尺度，"): Unicode字符U+5ea6
+## 不带字体度量
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{text}\NormalTok{(}\DecValTok{190}\NormalTok{, }\DecValTok{11}\NormalTok{, }\StringTok{"而点的左边为真实海拔（单位：m）"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<e8>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<80>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<8c>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<e7>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<82>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<b9>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<e7>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<9a>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<84>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<e5>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<b7>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<a6>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<e8>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<be>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<b9>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<e4>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<b8>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<ba>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<e7>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<9c>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<9f>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<e5>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<ae>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<9e>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<e6>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<b5>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<b7>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<e6>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<8b>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<94>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<e5>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<8d>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<95>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<e4>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<bd>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"):
+## 'mbcsToSbcs'里转换'鑰岀偣鐨勫乏杈逛负鐪熷疄娴锋嫈锛堝崟浣嶏細m锛�'出错：<8d>代
+## 替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"): Unicode字符
+## U+800c不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"): Unicode字符
+## U+70b9不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"): Unicode字符
+## U+7684不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"): Unicode字符
+## U+5de6不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"): Unicode字符
+## U+8fb9不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"): Unicode字符
+## U+4e3a不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"): Unicode字符
+## U+771f不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"): Unicode字符
+## U+5b9e不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"): Unicode字符
+## U+6d77不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"): Unicode字符
+## U+62d4不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"): Unicode字符
+## U+5355不带字体度量
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(190, 11, "而点的左边为真实海拔（单位：m）"): Unicode字符
+## U+4f4d不带字体度量
+\end{verbatim}
+
+\includegraphics{homework1_files/figure-latex/unnamed-chunk-21-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(area }\SpecialCharTok{\textasciitilde{}}\NormalTok{ elevation, }\AttributeTok{pch=}\DecValTok{16}\NormalTok{, }\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\DecValTok{170}\NormalTok{,}\DecValTok{280}\NormalTok{), }\AttributeTok{ylog=}\NormalTok{T)}
+\FunctionTok{text}\NormalTok{(area }\SpecialCharTok{\textasciitilde{}}\NormalTok{ elevation, }\AttributeTok{labels=}\FunctionTok{row.names}\NormalTok{(Manitoba.lakes), }\AttributeTok{pos=}\DecValTok{4}\NormalTok{, }\AttributeTok{ylog=}\NormalTok{T)}
+\FunctionTok{text}\NormalTok{(area }\SpecialCharTok{\textasciitilde{}}\NormalTok{ elevation, }\AttributeTok{labels=}\NormalTok{area, }\AttributeTok{pos=}\DecValTok{2}\NormalTok{, }\AttributeTok{ylog=}\NormalTok{T)}
+\FunctionTok{title}\NormalTok{(}\StringTok{"Manitoba\textquotesingle{}s Largest Lakes"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{homework1_files/figure-latex/unnamed-chunk-22-1.pdf}
+
+\hypertarget{mb.ch1.7}{%
+\section{MB.Ch1.7}\label{mb.ch1.7}}
+
+\hypertarget{a-5}{%
+\subsection{(a)}\label{a-5}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dotchart}\NormalTok{(area, }\AttributeTok{labels=}\FunctionTok{row.names}\NormalTok{(Manitoba.lakes), }\AttributeTok{xlab =} \StringTok{"Area"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Name"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Manitoba\textquotesingle{}s Largest Lakes"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{homework1_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+\hypertarget{b-4}{%
+\subsection{(b)}\label{b-4}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dotchart}\NormalTok{(}\FunctionTok{log2}\NormalTok{(area), }\AttributeTok{labels=}\FunctionTok{row.names}\NormalTok{(Manitoba.lakes), }\AttributeTok{xlab =} \StringTok{"log2(Area)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Name"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Manitoba\textquotesingle{}s Largest Lakes"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{homework1_files/figure-latex/unnamed-chunk-24-1.pdf}
+
+\hypertarget{mb.ch1.8}{%
+\section{MB.Ch1.8}\label{mb.ch1.8}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lower\_bound }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(area)}
+\NormalTok{lower\_bound}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 41771
+\end{verbatim}
+
+\end{document}

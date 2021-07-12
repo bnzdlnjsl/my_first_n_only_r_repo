@@ -1,0 +1,82 @@
+---
+title: "Lab2"
+author: "hxp"
+date: "2021/7/11"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+```
+
+
+```{r load_data}
+# load data
+grand_slams <- read_csv("data/grand_slams.csv")
+```
+# First plot
+
+```{r}
+grand_slams %>% ggplot() + geom_point(aes(x = rolling_win_count, y = tournament_date)) + 
+  labs(x = "rolling win count", y = "tournament date", title = "hahaha") + 
+  theme(legend.title=element_blank())
+```
+```{r}
+head(grand_slams)
+```
+```{r}
+more_than_10_wins <- grand_slams %>%
+  group_by(name) %>%
+  filter(any(rolling_win_count > 10))
+more_than_10_wins
+more_than_10_wins %>% ggplot() + geom_point(aes(x = rolling_win_count, y = tournament_date, color = name)) + 
+  labs(x = "rolling win count", y = "tournament date", title = "hahaha") + 
+  theme(legend.title=element_blank())
+
+```
+```{r}
+more_than_10_wins %>% ggplot(aes(x = name, fill = name)) +
+  geom_bar()
+```
+```{r}
+more_than_10_wins <- more_than_10_wins %>% group_by(name) %>%
+  mutate(
+    first_win = min(tournament_date), days_since_first = as.numeric(tournament_date - first_win))
+more_than_10_wins %>% ggplot(aes(x = days_since_first, y = rolling_win_count, color = name)) +
+  geom_line() + facet_wrap(~gender)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

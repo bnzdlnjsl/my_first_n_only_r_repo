@@ -78,7 +78,7 @@ It is compatible. Since one row can take more than just one NA value among its c
 **a. The variable Built_2005_or_later indicates the percentage of houses in each Census tract built since 2005. Plot median house prices against this variable.**
 
 ```{r}
-ca_pa %>% ggplot() + 
+  ca_pa %>% ggplot() + 
   geom_point(aes(x = Built_2005_or_later, y = Median_house_value)) +
   labs(x = "Built 2005 or later", y = "Median house value", 
        title = "plot of 2.a")

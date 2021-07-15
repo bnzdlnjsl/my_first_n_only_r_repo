@@ -1,0 +1,82 @@
+---
+title: "Lab6"
+author: "hxp"
+date: "2021/7/14"
+output: html_document
+---
+
+```{r echo = FALSE, message = FALSE}
+library(ggplot2)
+library(tidyverse)
+```
+
+```{r}
+ckm_nodes <- read_csv("data\\ckm_nodes.csv")
+row.names(ckm_nodes)
+```
+```{r}
+table(ckm_nodes$adoption_date)
+```
+```{r}
+sum(is.na(ckm_nodes$adoption_date))
+```
+```{r}
+doctors.not_NA <- which(!is.na(ckm_nodes$adoption_date)); doctors.not_NA
+length(doctors.not_NA)
+ckm_nodes <- ckm_nodes[doctors.not_NA, ]
+sum(is.na(ckm_nodes$adoption_date))
+```
+```{r}
+ckm_nodes %>% ggplot(aes(x = adoption_date)) + geom_bar()
+```
+```{r}
+my_data <- ckm_nodes %>% mutate(trash_bool = TRUE) %>% group_by(adoption_date) %>% summarise(number_per_mon = sum(trash_bool)) %>% ungroup()
+my_data
+```
+
+```{r}
+v1 <- which(ckm_nodes$adoption_date <= 2)
+length(v1)
+v2 <- which(ckm_nodes$adoption_date >= 15)
+length(v2)
+```
+```{r}
+ckm_network <- read.table("data\\ckm_network.dat")
+ckm_network <- ckm_network[doctors.not_NA, ]
+ckm_network <- ckm_network[, doctors.not_NA]
+ckm_network
+```
+```{r}
+n1 <- rowSums(ckm_network)
+n1[41]
+```
+
+
+```{r}
+v1 <- ckm_network[row.names(ckm_network) == '37', ]
+v2 <- ckm_nodes$adoption_date <= 5
+v3 <- v1 & v2
+sum(v3)
+sum(v3) / sum(v1)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

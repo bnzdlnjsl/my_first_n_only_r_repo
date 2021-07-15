@@ -1,0 +1,98 @@
+library(ggplot2)
+library(tidyverse)
+
+# data about the month:
+ckm_nodes <- read_csv("data\\ckm_nodes.csv")
+
+# data about the contacts:
+ckm_network <- read.table("data\\ckm_network.dat")
+
+# a Boolean vector that shows whether the doctor got the adopted month recorded:
+dct.bool.got_data <- !is.na(ckm_nodes$adoption_date)
+
+# the vector of indexes of those doctors:
+dct.idx.got_data <- which(dct.bool.got_data)
+
+# cut off all useless rows in month data and rows and cols of those in contacts data:
+ckm_nodes <- ckm_nodes[dct.idx.got_data,]
+ckm_network <- ckm_network[dct.idx.got_data, dct.idx.got_data]
+
+# number of rows after cleaning the data:
+dct.n <- nrow(ckm_nodes)
+
+# make a combination of doctor number and month:
+dct.tbl.a <- ckm_nodes %>% mutate(begin = 1, doctor = 1 : nrow(ckm_nodes)) %>% 
+  dplyr::select(doctor, month = adoption_date, begin)
+
+# develop a table of indexes of each obs:
+dct.tbl <- data.frame(doctor = rep(1 : dct.n, each = 17), month = rep(1 : 17, times = 125))
+
+# do one left join operation to form a one-hot vector by hand:
+dct.tbl <- dplyr::left_join(dct.tbl, dct.tbl.a, by = c("doctor", "month"))
+dct.tbl$begin[is.na(dct.tbl$begin)] <- 0
+
+# whether that doctor had begun before that month:
+dct.tbl <- dct.tbl %>% group_by(doctor) %>% 
+  mutate(begin_before = (cumsum(begin) - begin)) %>% 
+  ungroup()
+
+# table of the number of contacts of each doctor in each month that begins adopting:
+dct.tbl.contacts_each_month <- data.frame(doctor = rep(1 : dct.n, times = rowSums(ckm_network)), month = ckm_nodes$adoption_date[unlist(apply(as.matrix(ckm_network), 1, function(e){return(which(as.logical(e)))}))]) %>% group_by(doctor, month) %>% summarise(contacts.begin = n())
+
+# left join into the ultra table:
+dct.tbl <- dplyr::left_join(dct.tbl, dct.tbl.contacts_each_month)
+dct.tbl$contacts.begin[is.na(dct.tbl$contacts.begin)] <- 0
+
+# adding the two last columns into the ultra table:
+dct.tbl <- dct.tbl %>% group_by(doctor) %>% 
+  mutate(contacts.begin_before = cumsum(contacts.begin) - contacts.begin, contacts.begin_in_or_before = cumsum(contacts.begin)) %>% ungroup() %>% dplyr::select(-contacts.begin)
+
+# generating p_k:
+dct.p.dmnt <- dct.tbl %>% filter(begin_before == 0) %>% 
+  group_by(contacts.begin_before) %>% summarise(dominator = n())
+dct.p.nmrt <- dct.tbl %>% filter(begin == 1) %>% 
+  group_by(contacts.begin_before) %>% summarise(numerator = n())
+dct.p <- dplyr::full_join(dct.p.dmnt, dct.p.nmrt) %>% 
+  mutate(pr = numerator / dominator)
+dct.p[is.na(dct.p)] <- 0
+
+# generating q_k:
+dct.q.dmnt <- dct.tbl %>% filter(begin_before == 0) %>% 
+  group_by(contacts.begin_in_or_before) %>% summarise(dominator = n())
+dct.q.nmrt <- dct.tbl %>% filter(begin == 1) %>% 
+  group_by(contacts.begin_in_or_before) %>% summarise(numerator = n())
+dct.q <- dplyr::full_join(dct.q.dmnt, dct.q.nmrt) %>% 
+  mutate(pr = numerator / dominator)
+dct.q[is.na(dct.q)] <- 0
+dct.q
+
+# estimation via least squares:
+f1 <- function(a, b, X = dct.p$contacts.begin_before){
+  return(a + b * X)
+}
+f2 <- function(a, b, X = dct.p$contacts.begin_before){
+  return(exp(a + b * X) / (1 + exp(a + b * X)))
+}
+ls <- function(params, f, Y = dct.p$pr){
+  return(mean((Y - f(params[1], params[2]))^2))
+}
+p1 <- c(0.03284105 , 0.03459169)
+result_1 <- nlm(ls, p1, f1)$estimate
+p2 <- c(-3.6872181, 0.3834268)
+result_2 <- nlm(ls, p2, f2)$estimate
+
+# plotting all the plots:
+interval.left <- min(dct.p$contacts.begin_before)
+interval.right <- max(dct.p$contacts.begin_before)
+X <- seq(interval.left, interval.right, (interval.right - interval.left) / 10000)
+
+dct.p %>% ggplot() + geom_line(aes(x = contacts.begin_before, y = pr))
+dct.q %>% ggplot() + geom_line(aes(x = contacts.begin_in_or_before, y = pr))
+ggplot() + geom_line(aes(x = dct.p$contacts.begin_before, y = dct.p$pr)) + 
+  geom_line(aes(x = X, y = f1(result_1[1], result_1[2], X)), colour = 'red') + 
+  geom_line(aes(x = X, y = f2(result_2[1], result_2[2], X)), colour = 'blue') + 
+  labs(x = "k", y = "probability", title = "all 3 plots w.r.t. pk") + 
+  geom_text(data = data.frame(x = 5, y = 0.21), 
+            aes(x, y, label = "a + bk"), hjust = 0, vjust = 0) + 
+  geom_text(data = data.frame(x = 2.5, y = 0.07), 
+            aes(x, y, label = "exp(a + bk)/(1 + exp(a + bk))"), hjust = 0, vjust = 0)
